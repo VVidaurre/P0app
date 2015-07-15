@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
-
+private Toast mAppToast;
 
 
     @Override
@@ -29,49 +29,37 @@ public class MainActivity extends ActionBarActivity {
 
         spotify_app_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence text = context.getString(R.string.spotify_app_toast_text);
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                showToast(context, R.string.spotify_app_toast_text, duration);
             }
         });
 
         score_app_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence text = context.getString(R.string.score_app_toast_text);
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                showToast(context, R.string.score_app_toast_text, duration);
             }
         });
 
         library_app_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence text = context.getString(R.string.library_app_toast_text);
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                showToast(context, R.string.library_app_toast_text, duration);
             }
         });
 
         build_app_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence text = context.getString(R.string.build_app_toast_text);
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                showToast(context, R.string.build_app_toast_text, duration);
             }
         });
 
         reader_app_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence text = context.getString(R.string.reader_app_toast_text);
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                showToast(context, R.string.reader_app_toast_text, duration);
             }
         });
 
         my_own_app_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence text = context.getString(R.string.my_own_app_toast_text);
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                showToast(context,R.string.my_own_app_toast_text,duration);
             }
         });
     }
@@ -96,5 +84,15 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void showToast(Context context,int textId, int duration)
+    {
+        if(mAppToast!=null)
+        {
+            mAppToast.cancel();
+        }
+          mAppToast = Toast.makeText(context,textId, duration);
+          mAppToast.show();
+
     }
 }
